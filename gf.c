@@ -1,77 +1,39 @@
-#include <iostream>
-#include <cstring>
-int min(int a, int b)
+#include <stdio.h>
+#include<math.h>
+int a[10];
+
+
+void print(int n,int k2)
 {
-    return a>b?b:a;
+
+
+
+	  if(k2)
+	  {
+	  
+	       print(n/2,--k2);
+	    	 if(n%2==0||n==0)
+	    	    printf("0");
+	    	 else
+	              printf("1");
+	 }
+	  
 }
- 
-int PrintSuperSequence(char *a, char *b, int m, int n)
-{
-    int l[m+1][n+1];
- 
-    for(int i=0;i<=m;i++)
-    {
-        for(int j=0;j<=n;j++)
-        {
-            if(!i)
-                l[i][j] = j;
-            else if(!j)
-                l[i][j] = i;
- 
-            else if(a[i-1]==b[j-1])
-            {
-                l[i][j] = 1 + l[i-1][j-1];
-            }
-            else
-            {
-                l[i][j] = 1 + min(l[i-1][j], l[i][j-1]);
-            }
-        }
-    }
- 
-    int index = l[m][n] ;
-    char *lc = new char[index+1];
-    lc[index] = '\0';
-    int i=m, j=n;
-    while(i>=0 && j>=0)
-    {
-        if(a[i-1] == b[j-1])
-        {
-            
-            lc[--index] = a[i-1];
-            i--;j--;
-        }
- 
-        if(l[i-1][j]<l[i][j-1])
-        {
-           
-             lc[--index] = a[i-1];
-             i--;
-        }
-        else
-        {
-            
-            lc[--index] = b[j-1];
-            j--;
-        }
-    }
- 
-    cout<<lc;
- 
-    return l[m][n];
-}
- 
-int supersubseq(char*str1, char* str2, int m,int n)
-{
-    return PrintSuperSequence(str1, str2, m, n);
-}
- 
-int main() {
- 
-    char * str1 = "abcabc";
-    char *str2 = "abacab";
-    int m = strlen(str1);
-    int n = strlen(str2);
-    cout<<endl<<supersubseq(str1, str2, m, n);
-    return 0;
+int main(void) {
+	int num,i,k;
+	scanf("%d",&k);
+    
+	if(num<0)
+	printf("0");
+	else
+	{
+	num=pow(2,k);
+	
+	for(i=0;i<num;i++)
+    	{
+    	print(i,k);
+    	printf("p\n");
+	}
+	}
+	return 0;
 }
